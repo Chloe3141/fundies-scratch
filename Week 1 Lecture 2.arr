@@ -1,4 +1,6 @@
 use context starter2024
+include image
+
 a = "Hello World"
 
 
