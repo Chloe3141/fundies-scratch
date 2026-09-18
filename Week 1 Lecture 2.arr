@@ -58,3 +58,4 @@ rotate(30, triangle(30, "solid", "red"))
 beside(triangle(30, "solid", "red"), rotate(60, triangle(30, "solid", "red")))
 
 #need to read slide
+text,regular polygon
