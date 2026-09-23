@@ -79,19 +79,4 @@ end
 
 horz-3-flag("red", "white", "blue")
 
-
-frame(
-  above(rectangle(120, 4.9, "solid", "red"),
-    above(rectangle(120, 4.9, "solid", "white"),
-      above(rectangle(120, 4.9, "solid", "red")
-        
-        above(rectangle(120, 4.9, "solid", "white"),
-          above(rectangle(120, 4.9, "solid", "red"),
-            above(rectangle(120, 4.9, "solid", "white"),
-              above(rectangle(120, 4.9, "solid", "red"),
-                above(rectangle(120, 4.9, "solid", "white"),
-                  above(rectangle(120, 4.9, "solid", "red"),
-                    above(rectangle(120, 4.9, "solid", "white"),
-                      above(rectangle(120, 4.9, "solid", "red"),
-                        above(rectangle(120, 4.9, "solid", "white"),
-                          above(rectangle(120, 4.9, "solid", "red")))))))))))))))
+regular-polygon(40, 8, "solid", "red")
