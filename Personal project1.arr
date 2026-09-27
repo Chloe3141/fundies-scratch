@@ -1,6 +1,5 @@
 
 include image
-include color
 
 x = (overlay-xy(circle(22, "solid", "red"), -39, 0, (overlay-xy(circle(22, "solid", "red"), 2, 230, rotate(180,triangle(80, "solid", "red"))))))
 
@@ -58,3 +57,36 @@ z = "Near or Far. Always and Forever."
 Lorelei = "I love you"
 
 
+
+
+
+
+
+a
+b
+C
+d
+e
+f
+g
+h
+i
+j
+k
+L
+m
+n
+o
+p
+q
+Cl
+r
+s
+t
+u
+v
+w
+x
+y
+z
+Lorelei
