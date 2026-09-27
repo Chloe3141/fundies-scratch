@@ -1,7 +1,8 @@
-xuse context starter2024
-include image
 
- = (overlay-xy(circle(22, "solid", "red"), -39, 0, (overlay-xy(circle(22, "solid", "red"), 2, 230, rotate(180,triangle(80, "solid", "red"))))))
+include image
+include color
+
+x = (overlay-xy(circle(22, "solid", "red"), -39, 0, (overlay-xy(circle(22, "solid", "red"), 2, 230, rotate(180,triangle(80, "solid", "red"))))))
 
 o = overlay(overlay-xy(circle(22, "solid", "pink"), -39, 0, (overlay-xy(circle(22, "solid", "pink"), 2, 30, rotate(180,triangle(80, "solid", "pink"))))), overlay-xy(circle(22, "solid", "red"), -39, 0, (overlay-xy(circle(22, "solid", "red"), 2, 30, rotate(180,triangle(80, "solid", "red"))))))
   
@@ -55,15 +56,5 @@ y = "I promise to be yours."
 z = "Near or Far. Always and Forever."
 
 Lorelei = "I love you"
-
-
-
-
-
-
-
-
-
-
 
 
