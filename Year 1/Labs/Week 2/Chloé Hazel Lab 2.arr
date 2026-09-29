@@ -1,21 +1,19 @@
 import file("lab2-support.arr") as support
 
+
+
 #Encryptor 1 test 1
 support.encryptor1("hello ") # -> Repeats string 5 times
 
 
-
-
-#my version of encryptor 1
+#My version of encryptor 1
 fun my-encryptor1(s :: String) -> String:
   doc: "Repeats input string 5 times."
   s + s + s + s + s
 end
 
 my-encryptor1("hello!")
-
-test-encryptor1(my-encryptor1)
-
+#Am I suposed to do anything with test-encryptor1(my-encryptor1)???
 
 
 
@@ -24,10 +22,24 @@ test-encryptor1(my-encryptor1)
 
 
   #Encryptor 2 test 1
-  support.encryptor2("hello") # -> Returns string minus one character or only as the first 3 characters.
+support.encryptor2("hello") # -> Returns string minus one character or only as the first 4 characters.
 
   #Encryptor 2 test 2
   support.encryptor2("hellooo") # -> Returns first four characters
+
+
+
+#My version of encryptor 2
+fun my-encryptor2(s :: String) -> String:
+  doc: "Returns first 4 characters of input string."
+  string-substring(s, 0, 4)
+end
+
+
+my-encryptor2("Hello")
+
+
+
 
 
 
@@ -45,16 +57,47 @@ test-encryptor1(my-encryptor1)
   support.encryptor3(support.encryptor2("hellooo")) # -> When an encryptor is placed in encryptor 3, returns the inside encryptor.
 
   #Encryptor 3 test 5
-  support.encryptor3("Hello.") # -> Returns string with ! instead of .
+support.encryptor3("Hello.") # -> Returns string with ! instead of .
+
+
+
+
+#My version of encryptor 3
+fun
+  my-encryptor3(s :: String) -> String:
+  doc: "Returns string, but any . is now !"
+  string-replace(s, ".", "!")
+end
+
+my-encryptor3("H.e.l.l.o.")
+
+
+
+
 
 
 
 
   #Encryptor 4 test 1
-  support.encryptor4("hello") # -> Returns string repeated 5 times, but with last character missing or only first 3 characters.
+  support.encryptor4("hello") # -> Returns string repeated 5 times, but with last character missing or only first 4 characters.
 
   #Encryptor 4 test 2
-  support.encryptor4("hellooo") # -> Returns string repeated 5 times, with only first 3 characters.
+support.encryptor4("hellooo") # -> Returns first 4 characters (encryptor 2), then repeats the new string 5 times (encryptor 1).
+
+
+
+# My version of encryptor 4
+fun
+  my-encryptor4(s :: String) -> String:
+  doc: "Performs encryption 2 (first 4 characters), then encryption 1 (repeat 5 times), on the string."
+  my-encryptor1(my-encryptor2(s))
+end
+
+my-encryptor4("1234567")
+
+
+
+
 
 
 
@@ -70,6 +113,15 @@ test-encryptor1(my-encryptor1)
   support.encryptor5("AEIOU")
   # A=B, E=F, I=J, O=P, U=V, case changes
   #It's always the consonant after the vowel with matching case.
+
+
+# My version of encryptor 5
+fun
+  
+
+
+
+
 
 
 
