@@ -4,6 +4,10 @@ import file("lab2-support.arr") as support
 support.encryptor1("hello ") # -> Repeats string 5 times
 
 
+fun my encryptor1(s :: String) ->
+
+
+
 
 
 #Encryptor 2 test 1
