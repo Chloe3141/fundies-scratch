@@ -123,7 +123,7 @@ support.encryptor9("É") # -> Looking at a unicode table, returns number associa
 
 #Encryptor 10 test 1
 support.encryptor10("hello")
-# Repeats string 5 times (encryptor 1), replaces vowel with following consonant while matching case (encryptor 5), and only returns the first 4 characters (encryptor 2)
+# Repeats string 5 times (encryptor 1), replaces vowel with following consonant and matches case (encryptor 5), and only returns the first 4 characters (encryptor 2)
 
 
 
