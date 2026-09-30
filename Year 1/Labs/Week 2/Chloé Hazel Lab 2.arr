@@ -9,7 +9,11 @@ support.encryptor1("hello ") # -> Repeats string 5 times
 #My version of encryptor 1
 fun my-encryptor1(s :: String) -> String:
   doc: "Repeats input string 5 times."
-  s + s + s + s + s
+  string-repeat(s, 5)
+where:
+  my-encryptor1("hi") is "hihihihihi"
+  my-encryptor1("1!") is "1!1!1!1!1!"
+  my-encryptor1(" ") is "     "
 end
 
 my-encryptor1("hello!")
@@ -28,11 +32,14 @@ support.encryptor2("hello") # -> Returns string minus one character or only as t
   support.encryptor2("hellooo") # -> Returns first four characters
 
 
-
 #My version of encryptor 2
 fun my-encryptor2(s :: String) -> String:
   doc: "Returns first 4 characters of input string."
   string-substring(s, 0, 4)
+where:
+  my-encryptor2("000101") is "0001"
+  my-encryptor2("    A") is "    "
+  my-encryptor2("abcde") is "abcd"
 end
 
 
@@ -61,12 +68,15 @@ support.encryptor3("Hello.") # -> Returns string with ! instead of .
 
 
 
-
 #My version of encryptor 3
 fun
   my-encryptor3(s :: String) -> String:
   doc: "Returns string, but any . is now !"
   string-replace(s, ".", "!")
+where:
+  my-encryptor3("....") is "!!!!"
+  my-encryptor3("abcd") is "abcd"
+  my-encryptor3("!!!!") is "!!!!"
 end
 
 my-encryptor3("H.e.l.l.o.")
@@ -91,6 +101,9 @@ fun
   my-encryptor4(s :: String) -> String:
   doc: "Performs encryption 2 (first 4 characters), then encryption 1 (repeat 5 times), on the string."
   my-encryptor1(my-encryptor2(s))
+where:
+  my-encryptor4("My name is") is "My nMy nMy nMy nMy n"
+  my-encryptor4("!!!!!") is "!!!!!!!!!!!!!!!!!!!!"
 end
 
 my-encryptor4("1234567")
@@ -116,9 +129,23 @@ my-encryptor4("1234567")
 
 
 # My version of encryptor 5
-fun
-  
-
+#|fun
+  my-encryptor5(s :: String) -> String:
+  doc: "Returns string, but replaces any vowel with following consonant matching the case."
+  string-replace
+  step1 = (s, "e", "f")
+  step2 = (s, "e", "f")
+end
+string-replace(s, "e", "f")
+    else if
+    string-replace(s, "i", "j")
+    else if
+    string-replace(s, "o", "p")
+    else if
+    string-replace(s, "u", "v")
+    else
+    string-replace(s, "A", "B")
+|#
 
 
 
@@ -136,15 +163,70 @@ fun
 
 
 
+# My version of encryptor 6
+fun
+  my-encryptor6(s :: String) -> String:
+  doc:"Returns string in all uppercase."
+  string-to-lower(s)
+  where:
+    string-to-lower("hello") is "hello"
+    string-to-lower("Hello") is "hello"
+    string-to-lower("HELLO") is "hello"
+    string-to-lower("hello !") is "hello !"
+  end
+
+my-encryptor6("IT'S RAINING!!!")
+
+
+
+
+
+
+
 
   #Encryptor 7 test 1
-  support.encryptor7("hello") # -> Returns string length plus one. (0 to 4) + 1 = 5
+support.encryptor7("hello") # -> Returns string length.
+
+
+# My version of encryptor 7
+fun
+  my-encryptor7(s :: String) -> Number:
+  doc: "Returns string length."
+  string-length(s)
+where:
+  my-encryptor7("hello") is 5
+  my-encryptor7("I") is 1
+  my-encryptor7("") is 0
+end
+
+my-encryptor7(" ! ")
+
+
+
+
 
 
 
 
   #Encryptor 8 test 1
   support.encryptor8("hello") # -> Repeats string 3 times with 3 ! in between.
+
+
+# My version of encryptor 8
+fun
+  my-encryptor8(s :: String) -> String:
+  doc: "Repeats string 3 times with three ! appended to each repeat."
+  string-repeat((string-append(s, "!!!")), 3)
+where:
+  my-encryptor8("A ") is "A !!!A !!!A !!!"
+  my-encryptor8("1") is "1!!!1!!!1!!!"
+end
+
+my-encryptor8("Hi")
+
+
+
+
 
 
 
@@ -189,30 +271,35 @@ fun
 
 
 
+# My version of encryptor 9
+fun
+  my-encryptor9(s :: String) -> Number:
+  doc: "Returns the unicode number for the first character."
+  string-to-code-point(string-substring(s, 0, 1))
+where:
+  my-encryptor9("abc") is 97
+  my-encryptor9("É") is 201
+end
+
+my-encryptor9("Éh!")
+my-encryptor9("oiseau")
+  
+
+
+
+
+
+
 
   #Encryptor 10 test 1
   support.encryptor10("hello")
   # Repeats string 5 times (encryptor 1), replaces vowel with following consonant and matches case (encryptor 5), and only returns the first 4 characters (encryptor 2)
 
 
-
-
-
-
-
-
-
-  # 9 look at documentation for string to code, unicode?
-
-  #not code to string, string to code
-
-
-  #10 do everything you've done in the others, in one encryptor.
-
-
-
-  #string sub-string, place inside repeat??
-
-
-
-  #for encryptors that combine actions of multiple encryptors, put one encryptor on the outside for the function and put the other on the inside, or a function on the inside?
+#| My version of encryptor 10
+fun
+  my-encryptor10(s :: String) -> String:
+  doc: "Replaces vowels with the following consonant while matching their case, then takes the first 4 characters of the string, and returns them repeated 5 times as a new string."
+  my-encryptor1(my-encryptor2(my-encryptor5(s)))
+where:
+|#
