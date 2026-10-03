@@ -131,7 +131,7 @@ my-encryptor4("1234567")
 # My version of encryptor 5
 fun
   my-encryptor5(s :: String) -> String:
-  doc: "..."
+  doc: "Replaces vowels with their following consonant always matching their case."
   e1 = string-replace(s, "a", "b")
   e2 = string-replace(e1, "e", "f")
   e3 = string-replace(e2, "i", "j")
@@ -142,7 +142,13 @@ fun
   e8 = string-replace(e7, "I", "J")
   e9 = string-replace(e8, "O", "P")
   e10 = string-replace(e9, "U", "V")
-  #where:
+  #|where:
+  my-encryptor5("aeiou") is "bfjpv"
+  my-encryptor5("AEIOU") is "BFJPV"
+  my-encryptor5(" ") is " "
+  my-encryptor5("123") is "123"
+  my-encryptor5("CDs!") is "CDs!"
+  |#
 end
   
   
