@@ -4,16 +4,20 @@ include data-source
 
 
 #|
-  The full design recipe:
- Four steps in this order, write the code last.
-   1. Type annotation: what types of input and outputs are expected
+   Questions:
+   1)   Can tables have doc strings? If so, how are they formatted?
+I can't seem to add one without errors and I tried using parentheses and a colon around the function name and type annotations because sometimes no colon is the problem.
+ 
+   2)   Can tables have where blocks? If so, what are they usually about and what are them sort of checking for?
+
+   These are mostly referencing problem 4.
    
-   2. Doc string: one sentence explaining purpose of function
    
-   3. Examples: concrete input/output pairs in a where: block
    
-   4. Code: the body, written last
+   3) Should comments be used for each action performed with a function?
+   For instance, in problem 5, I find the median, then the mode, and so on. Should I comment what I am doing each time?
 |#
+
 
 
 # Problem 1
@@ -55,25 +59,6 @@ tick(5)
 
 
 
-#|
-   fun leap-year(year :: Number) -> Bool:
-  if
-    ((leap-year(year) / 4) == NumInteger)
-    and
-    ((leap-year(year) / 100) == non-whole):
-    true
-  else if
-    ((leap-year(year) / 100) == NumInteger)
-    and
-    ((leap-year(year) / 400) == NumInteger):
-    true 
-  else:
-    false
-  end
-end
-
-|#
-
 
 
 
@@ -108,7 +93,6 @@ rock-paper-scissors("paper", "rock")
 
 
 # Problem 4
-#Question: Can tables have doc strings and where blocks?
 planets = table: Planet :: String, Distance :: Number
   row: "Mercury", 0.39
   row: "Venus", 0.72
@@ -145,11 +129,8 @@ something = load-table:
   sanitize rate using num-sanitizer
 end
 
-something
-
-
-
-
-#|3rd parameter of order-by is true or false making it ascending or descending
-
-(dataset or table, "rate", true or false)|#
+something.length()
+median(something, "rate")
+modes(something, "rate")
+order-by(something, "rate", true)
+order-by(something, "rate", false)
