@@ -76,6 +76,8 @@ with-total.get-column("total")
 
 #transform-column(sales, "price", add-vat)
 
+
+
 billed = build-column(transform-column(sales, "price", add-vat), "total", line-total)
 
 billed
@@ -111,11 +113,20 @@ end
 
 items
 
-transform-column(
+
+#transfomrm-column(table, "column name", computation-fucntion)
+fun add-10(c :: Number) -> Number
+  doc:"Adds 10 to x-coordinate."
+  c + 10
+end
+
+#
+
+#|transform-column(
     transform-column(items, "x-coordinate", lam(n): n * 0.9 end),
     "y-coordinate", lam(n): n * 0.9 end
     )
-
+|#
 
 
 
