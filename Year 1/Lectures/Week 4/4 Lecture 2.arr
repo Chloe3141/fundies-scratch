@@ -115,7 +115,7 @@ items
 
 
 #transfomrm-column(table, "column name", computation-fucntion)
-fun add-10(c :: Number) -> Number
+fun add-10(c :: Number) -> Number:
   doc:"Adds 10 to x-coordinate."
   c + 10
 end
