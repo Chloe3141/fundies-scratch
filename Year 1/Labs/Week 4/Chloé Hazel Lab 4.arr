@@ -4,7 +4,7 @@ include data-source
 
 
 # Exercise 1 — Long Flights
-#1
+#1 - Inserting flight data table
 flights = load-table:
   rownames :: Number,
   dep_time :: Number,
@@ -55,24 +55,30 @@ is_long_flight(flights.row-n(3))
 
 
 
-#3
+#3 - creates a table of only long flights
 only_long_flights = filter-with(flights, is_long_flight)
 
 only_long_flights
 
 
 
-#4
+#4 - orders table of only long flights from most to least air-time
 great-to-least = order-by(only_long_flights, "air_time", false)
 
 great-to-least
 
 
 
-#5
+
+#5 - Specific information about flight with longest air-time.
 great-to-least.row-n(0)["carrier"]
 great-to-least.row-n(0)["origin"]
 great-to-least.row-n(0)["dest"]
+
+
+
+
+
 
 
 
@@ -106,7 +112,107 @@ end
 
 
 #3
+#Keep only flights delayed 30 or more minutes
 only-delayed = filter-with(flights, lam(t): t["dep_delay"] >= 30 end)
 
+only-delayed
+
+
+
+#keep only morning flights delayed 30 or more minutes
 delayed-morning = filter-with(only-delayed, lam(t): t["sched_dep_time"] < 1200 end)
 
+delayed-morning
+
+
+
+
+#4 - Keep only morning delays with distance over 500
+long-delayed-morning = filter-with(delayed-morning, lam(t): t["distance"] > 500 end)
+
+long-delayed-morning
+
+
+
+
+#5 - order by longest morning departure delay
+rank-long-delayed-morning = order-by(long-delayed-morning, "dep_delay", false)
+
+rank-long-delayed-morning
+
+
+
+
+#6 - Specific data about longest morning departure delay
+rank-long-delayed-morning.row-n(0)["flight"]
+rank-long-delayed-morning.row-n(0)["origin"]
+rank-long-delayed-morning.row-n(0)["dep_delay"]
+
+
+
+
+
+
+
+
+
+#Exercise 3 — Clean Delays + Compute Effective Speed
+
+#1 - Creating function to use in transform column
+fun only-late(n :: Number) -> Number:
+  doc: "Transforms dep_delay column so that early departures are show as 0 rather than negative."
+  if n < 0:
+    0
+  else:
+    n
+  end
+where:
+  8 is 8
+  0 is 0
+  -4 is -4
+end
+
+
+#Transforming dep_delay column, then transforming arr_delay in that new table. All negatives are now 0.
+no-early = transform-column(transform-column(flights, "dep_delay", only-late), "arr_delay", only-late)
+
+no-early
+
+
+
+
+
+#2 - Build column "effective_speed" (mph)
+fun speed(r :: Row) -> Number:
+  doc: "Calculates effective speed from distance and air_time of a flight."
+  if r["air_time"] > 0:
+    r["distance"] / (r["air_time"] / 60)
+  else:
+    0
+  end
+where:
+  speed(no-early.row-n(0)) is 84000/227
+end
+
+
+with-speed = build-column(no-early, "effective_speed", speed) 
+
+with-speed
+
+
+#3 - Ordering flights fastest to slowest by effective_speed
+order-by(with-speed, "effective_speed", false)
+
+
+#4 - Specific data about fastest flight
+with-speed.row-n(0)["carrier"]
+with-speed.row-n(0)["origin"]
+with-speed.row-n(0)["dest"]
+
+
+
+
+
+
+
+#Exercise 4 — Discount Late Arrivals + On-Time Score
