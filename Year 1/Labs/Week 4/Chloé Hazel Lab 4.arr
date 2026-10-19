@@ -200,6 +200,8 @@ with-speed = build-column(no-early, "effective_speed", speed)
 with-speed
 
 
+
+
 #3 - Ordering flights fastest to slowest by effective_speed
 order-by(with-speed, "effective_speed", false)
 
@@ -216,3 +218,24 @@ with-speed.row-n(0)["dest"]
 
 
 #Exercise 4 — Discount Late Arrivals + On-Time Score
+#|
+  Define a function apply-arrival-discount(t :: Table) -> Table that take a table t and reduces arr_delay by 20% only when: 0 ≤ arr_delay ≤ 45. The table t should have at least one column named arr_delay.
+
+Hint: Use transform-column with a lambda that applies the discount if the condition holds, otherwise leaves the value unchanged.
+
+Hint: Write a small test table with a few rows (-10, 0, 30, 60) to test your function. Include a where: block with a small test table (3-4 rows) inside your function definition.
+
+And then apply this function to the flights table. (apply-arrival-discount(flights)) 
+|#
+
+
+fun apply-arrival-discount(t :: Table) -> Table:
+  doc: "Takes a table and reduces arr_delay between 0 and 45 by 20%."
+  if t["arr_delay"] <= 45:
+    t["arr_delay"] * 0.8
+  else:
+    t["arr_delay"]
+  end
+end
+
+apply-arrival-discount(with-speed)
