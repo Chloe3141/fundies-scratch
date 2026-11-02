@@ -42,3 +42,5 @@ voter-data =
 end
 
 voter-data
+
+string-substring(voter-data.row-n(6)["County"], 0, 14)
