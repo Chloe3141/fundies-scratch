@@ -107,7 +107,7 @@ where:
   my-sum([list: ]) is 0
 end
 
-
+"LINE 110"
 my-sum([list: 2, 3, 45, 6789, 0, 0])
 my-sum(sales)
 
@@ -147,7 +147,7 @@ add-twenty(sales)
 
 
 #same thing, but now with lambda!
-map(lam(p): p * 1.2 end, sales)\
+map(lam(p): p * 1.2 end, sales)
 
 
 
@@ -184,3 +184,4 @@ end
    answers so far: 0,
    next item: 45, 30, 55
    new answer: 45, 75, 130
+|#
