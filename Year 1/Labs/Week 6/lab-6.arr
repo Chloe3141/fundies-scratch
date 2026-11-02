@@ -6,7 +6,6 @@ use context dcic2024
 fun ( :: ) -> :
   doc: ""
   
-end
 where:
   is 
 end
@@ -27,7 +26,6 @@ end
 fun ( :: ) -> :
   doc: ""
   
-end
 where:
   is 
 end
@@ -53,7 +51,6 @@ end
 fun ( :: ) -> :
   doc: ""
   
-end
 where:
   is 
 end
@@ -79,7 +76,6 @@ end
 fun ( :: ) -> :
   doc: ""
   
-end
 where:
   is 
 end
@@ -105,7 +101,6 @@ end
 fun ( :: ) -> :
   doc: ""
   
-end
 where:
   is 
 end
@@ -131,7 +126,6 @@ end
 fun ( :: ) -> :
   doc: ""
   
-end
 where:
   is 
 end
